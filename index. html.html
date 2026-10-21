@@ -1,0 +1,1798 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ইহসান ব্রাদারহুড | মিলন মেলা ২০২৭</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --navy: #0d1726;
+  --gold: #d4b77a;
+  --cream: #f4efe5;
+  --muted: #b7bdc6;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--navy);
+  color: var(--cream);
+  font-family: 'Hind Siliguri', sans-serif;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* CINEMATIC INTRO */
+.intro-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: #050a12;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 25px;
+  animation: curtainExit 1.4s ease 3.5s forwards;
+  pointer-events: none;
+}
+
+.intro-content {
+  animation: titleReveal 2.2s cubic-bezier(.2,.7,.2,1) .35s both;
+}
+
+.intro-small {
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 5px;
+  margin-bottom: 25px;
+  opacity: 0;
+  animation: fadeIn 1s ease 1s forwards;
+}
+
+.intro-title {
+  font-size: clamp(32px, 8vw, 72px);
+  line-height: 1.5;
+  font-weight: 600;
+  text-shadow: 0 0 35px rgba(212,183,122,.12);
+}
+
+.intro-title span {
+  display: block;
+  color: var(--gold);
+}
+
+.intro-line {
+  height: 1px;
+  width: 0;
+  background: var(--gold);
+  margin: 25px auto 0;
+  animation: lineExpand 1s ease 1.5s forwards;
+}
+
+/* HERO */
+.hero {
+  min-height: 100svh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 90px 22px;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--navy);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: -4%;
+  z-index: -2;
+  background: url('hero.jpg') center/cover no-repeat;
+  opacity: 0;
+  transform: scale(1.12);
+  animation: backgroundReveal 2.6s ease 3.7s forwards,
+             cinematicZoom 18s ease-in-out 6.3s infinite alternate;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    180deg,
+    rgba(5,12,23,.38),
+    rgba(5,12,23,.62) 55%,
+    var(--navy)
+  );
+  opacity: 0;
+  animation: fadeIn 1.5s ease 4s forwards;
+}
+
+.hero-content {
+  max-width: 850px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: heroReveal 1.6s ease 4.3s forwards;
+}
+
+.eyebrow {
+  color: var(--gold);
+  letter-spacing: 4px;
+  font-size: 12px;
+  margin-bottom: 25px;
+}
+
+.hero h1 {
+  font-size: clamp(40px, 9vw, 86px);
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+.hero h1 span {
+  display: block;
+  color: var(--gold);
+}
+
+.hero-subtitle {
+  color: #e2dfd7;
+  font-size: clamp(15px, 3vw, 20px);
+  margin-top: 22px;
+  line-height: 1.9;
+}
+
+.hero-line {
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  margin: 30px auto;
+  animation: lineExpand 1s ease 5.1s forwards;
+}
+
+.cta {
+  display: inline-block;
+  border: 1px solid var(--gold);
+  padding: 12px 28px;
+  color: var(--gold);
+  transition: .35s;
+  font-size: 14px;
+}
+
+.cta:hover {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+.scroll-note {
+  position: absolute;
+  bottom: 25px;
+  left: 0;
+  right: 0;
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 3px;
+  opacity: 0;
+  animation: fadeIn 1.2s ease 5.4s forwards;
+}
+
+/* SECTIONS */
+.section {
+  padding: 100px 22px;
+}
+
+.container {
+  max-width: 1050px;
+  margin: auto;
+}
+
+.section-label {
+  color: var(--gold);
+  font-size: 12px;
+  letter-spacing: 3px;
+  margin-bottom: 18px;
+}
+
+.story {
+  text-align: center;
+  background: radial-gradient(
+    ellipse at top,
+    #19283b 0%,
+    var(--navy) 70%
+  );
+}
+
+.story h2,
+.gallery h2 {
+  font-size: clamp(30px, 6vw, 48px);
+  line-height: 1.5;
+  font-weight: 500;
+  margin-bottom: 28px;
+}
+
+.story h2 span {
+  color: var(--gold);
+}
+
+.story-text {
+  max-width: 700px;
+  margin: auto;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 2.2;
+  font-weight: 300;
+}
+
+.story-text p + p {
+  margin-top: 18px;
+}
+
+.signature {
+  margin-top: 35px;
+  color: var(--gold);
+  font-size: 15px;
+}
+
+.gallery {
+  background: #101d2e;
+}
+
+.gallery-heading {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.gallery-heading p {
+  color: var(--muted);
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.photo {
+  position: relative;
+  overflow: hidden;
+  background: #1b293a;
+  aspect-ratio: 4 / 5;
+  cursor: pointer;
+  border-radius: 2px;
+  opacity: 0;
+  transform: translateY(38px) scale(.96);
+  transition:
+    opacity .85s ease,
+    transform .85s cubic-bezier(.2,.7,.2,1);
+}
+
+.photo.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: .85;
+  transform: scale(1.04);
+  transition: transform .9s ease, opacity .5s ease;
+}
+
+.photo.visible img {
+  transform: scale(1);
+}
+
+.photo:hover img {
+  transform: scale(1.08);
+  opacity: 1;
+}
+
+.photo::after {
+  content: 'VIEW PHOTO ↗';
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  font: 10px Arial, sans-serif;
+  letter-spacing: 2px;
+  color: white;
+  text-shadow: 0 1px 6px #000;
+  opacity: .85;
+}
+
+footer {
+  padding: 35px 20px;
+  text-align: center;
+  border-top: 1px solid #263347;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 2;
+}
+
+footer span {
+  color: var(--gold);
+}
+
+/* SCROLL REVEAL */
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* LIGHTBOX */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(3,7,13,.96);
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .35s, visibility .35s;
+}
+
+.lightbox.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 85vh;
+  object-fit: contain;
+  transform: scale(.94);
+  transition: transform .35s;
+}
+
+.lightbox.open img {
+  transform: scale(1);
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 35px;
+  color: white;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+/* ANIMATIONS */
+@keyframes titleReveal {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+    filter: blur(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes lineExpand {
+  to { width: 65px; }
+}
+
+@keyframes curtainExit {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes backgroundReveal {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes cinematicZoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.09); }
+}
+
+@keyframes heroReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* MOBILE */
+@media (max-width: 650px) {
+  .section {
+    padding: 75px 18px;
+  }
+
+  .photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 9px;
+  }
+
+  .photo {
+    aspect-ratio: 3 / 4;
+  }
+
+  .hero h1 {
+    letter-spacing: 0;
+  }
+
+  .story-text {
+    font-size: 15px;
+  }
+}
+
+/* ACCESSIBILITY */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .intro-screen {
+    display: none;
+  }
+
+  .hero-content,
+  .hero::before,
+  .hero::after,
+  .scroll-note {
+    opacity: 1;
+    transform: none;
+  }
+
+  .photo,
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- CINEMATIC TITLE INTRO -->
+<div class="intro-screen">
+  <div class="intro-content">
+    <div class="intro-small">A REUNION · 2027</div>
+    <h1 class="intro-title">
+      ইহসান ব্রাদারহুড
+      <span>মিলন মেলা ২০২৭</span>
+    </h1>
+    <div class="intro-line"></div>
+  </div>
+</div>
+
+<!-- SECTION 1: HERO -->
+<header class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">A REUNION • 2027</div>
+
+    <h1>
+      ইহসান ব্রাদারহুড
+      <span>মিলন মেলা ২০২৭</span>
+    </h1>
+
+    <div class="hero-line"></div>
+
+    <p class="hero-subtitle">
+      পুরোনো বন্ধন, নতুন স্মৃতির গল্প।<br>
+      আবারও একসঙ্গে, হৃদয়ের টানে।
+    </p>
+
+    <a href="#story" class="cta">স্মৃতির পাতায় ফিরে যাই ↓</a>
+  </div>
+
+  <div class="scroll-note">SCROLL TO REMEMBER</div>
+</header>
+
+<!-- SECTION 2: EMOTIONAL STORY -->
+<section class="section story" id="story">
+  <div class="container">
+    <div class="section-label reveal">OUR STORY · OUR BOND</div>
+
+    <h2 class="reveal">
+      সময় পেরিয়ে যায়,<br>
+      <span>কিছু বন্ধন থেকে যায়।</span>
+    </h2>
+
+    <div class="story-text reveal">
+      <p>
+        জীবনের পথে আমরা হয়তো ছড়িয়ে পড়েছি
+        নানা জায়গায়। বদলে গেছে দিন, বদলে গেছে
+        ব্যস্ততা। তবুও হৃদয়ের কোথাও রয়ে গেছে
+        সেই পরিচিত মুখগুলো, সেই চেনা দিনগুলো।
+      </p>
+
+      <p>
+        একসঙ্গে কাটানো মুহূর্ত, হাসি-আড্ডা,
+        দুষ্টুমি আর অসংখ্য স্মৃতি—সবকিছুই আজ
+        আমাদের কাছে এক অমূল্য সম্পদ। দূরত্ব
+        হয়তো আমাদের আলাদা রেখেছে, কিন্তু
+        বন্ধনের গল্পটা এখনো শেষ হয়নি।
+      </p>
+
+      <p>
+        ইহসান ব্রাদারহুড মিলন মেলা ২০২৭—
+        শুধু একটি আয়োজন নয়; পুরোনো সম্পর্কগুলোকে
+        নতুন করে অনুভব করার, হারিয়ে যাওয়া
+        মুহূর্তগুলোকে আবার কাছে টেনে নেওয়ার
+        একটি সুন্দর উপলক্ষ।
+      </p>
+
+      <p>
+        <strong>আবার দেখা হবে। আবার গল্প হবে।
+        আবার স্মৃতিরা জীবন্ত হয়ে উঠবে।</strong>
+      </p>
+    </div>
+
+    <div class="signature reveal">
+      এক বন্ধন, এক ভ্রাতৃত্ব, অগণিত স্মৃতি।
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: PHOTO GALLERY -->
+<section class="section gallery" id="gallery">
+  <div class="container">
+    <div class="gallery-heading">
+      <div class="section-label reveal">THE MEMORY ARCHIVE</div>
+      <h2 class="reveal">স্মৃতির অ্যালবাম</h2>
+      <p class="reveal">
+        কিছু মুহূর্ত ছবি হয়ে থাকে, অনুভূতি হয়ে বেঁচে থাকে।
+      </p>
+    </div>
+
+    <div class="photo-grid">
+      <div class="photo"><img src="1.jpg" alt="পুরোনো স্মৃতি ১" loading="lazy"></div>
+      <div class="photo"><img src="2.jpg" alt="পুরোনো স্মৃতি ২" loading="lazy"></div>
+      <div class="photo"><img src="3.jpg" alt="পুরোনো স্মৃতি ৩" loading="lazy"></div>
+      <div class="photo"><img src="4.jpg" alt="পুরোনো স্মৃতি ৪" loading="lazy"></div>
+      <div class="photo"><img src="5.jpg" alt="পুরোনো স্মৃতি ৫" loading="lazy"></div>
+      <div class="photo"><img src="6.jpg" alt="পুরোনো স্মৃতি ৬" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>ইহসান ব্রাদারহুড <span>·</span> মিলন মেলা ২০২৭</p>
+  <p>পুরোনো বন্ধন, নতুন স্মৃতির গল্প।</p>
+</footer>
+
+<!-- IMAGE LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="close" id="closeLightbox" aria-label="বন্ধ করুন">×</button>
+  <img id="lightboxImage" src="" alt="বড় করে দেখা ছবি">
+</div>
+
+<script>
+// Scroll reveal for sections and photos
+const revealItems = document.querySelectorAll('.reveal, .photo');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const item = entry.target;
+
+      if (item.classList.contains('photo')) {
+        const allPhotos = [...document.querySelectorAll('.photo')];
+        const index = allPhotos.indexOf(item);
+        item.style.transitionDelay = `${(index % 3) * 140}ms`;
+      }
+
+      item.classList.add('visible');
+      observer.unobserve(item);
+    }
+  });
+}, {
+  threshold: 0.12
+});
+
+revealItems.forEach(item => observer.observe(item));
+
+// Image lightbox
+const lightbox = document.getElementById('lightbox');
+const lightboxImage = document.getElementById('lightboxImage');
+
+document.querySelectorAll('.photo img').forEach(img => {
+  img.addEventListener('click', () => {
+    lightboxImage.src = img.src;
+    lightbox.classList.add('open');
+  });
+});
+
+function closeLightbox() {
+  lightbox.classList.remove('open');
+}
+
+document.getElementById('closeLightbox')
+  .addEventListener('click', closeLightbox);
+
+lightbox.addEventListener('click', event => {
+  if (event.target === lightbox) closeLightbox();
+});
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') closeLightbox();
+});
+</script>
+<!-- BANDARBAN TOUR PLAN SECTION -->
+<style>
+  .tour-section {
+    --tour-bg: #0d1726;
+    --tour-card: #142235;
+    --tour-gold: #d4b77a;
+    --tour-cream: #f4efe5;
+    --tour-muted: #b5bfcc;
+    background: var(--tour-bg);
+    color: var(--tour-cream);
+    padding: 75px 18px;
+    font-family: Georgia, "Noto Serif Bengali", serif;
+    overflow: hidden;
+  }
+
+  .tour-section * {
+    box-sizing: border-box;
+  }
+
+  .tour-wrap {
+    max-width: 1050px;
+    margin: auto;
+  }
+
+  .tour-heading {
+    text-align: center;
+    margin-bottom: 35px;
+  }
+
+  .tour-kicker {
+    color: var(--tour-gold);
+    letter-spacing: 3px;
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+
+  .tour-heading h2 {
+    font-size: clamp(30px, 5vw, 48px);
+    margin: 15px 0;
+    color: var(--tour-cream);
+    font-weight: 500;
+  }
+
+  .tour-heading p {
+    color: var(--tour-muted);
+    font-size: 16px;
+    line-height: 1.9;
+  }
+
+  .tour-intro {
+    text-align: center;
+    max-width: 780px;
+    margin: 0 auto 45px;
+    line-height: 2;
+    color: var(--tour-cream);
+    font-size: 17px;
+  }
+
+  .tour-intro span {
+    color: var(--tour-gold);
+  }
+
+  .tour-cover {
+    position: relative;
+    height: 340px;
+    overflow: hidden;
+    border-radius: 5px;
+    margin-bottom: 35px;
+    background: #1b2b3d;
+  }
+
+  .tour-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: 0.78;
+    transition: transform 1s ease;
+  }
+
+  .tour-cover:hover img {
+    transform: scale(1.04);
+  }
+
+  .tour-cover::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      0deg,
+      rgba(8, 16, 27, 0.95),
+      transparent 85%
+    );
+    pointer-events: none;
+  }
+
+  .tour-cover-caption {
+    position: absolute;
+    z-index: 1;
+    left: 25px;
+    right: 20px;
+    bottom: 25px;
+  }
+
+  .tour-cover-caption h3 {
+    margin: 0 0 8px;
+    color: white;
+    font-size: clamp(25px, 4vw, 38px);
+    font-weight: 500;
+  }
+
+  .tour-cover-caption p {
+    margin: 0;
+    color: var(--tour-gold);
+  }
+
+  .tour-facts {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 45px;
+  }
+
+  .tour-fact {
+    padding: 22px 12px;
+    text-align: center;
+    background: var(--tour-card);
+    border: 1px solid rgba(212, 183, 122, 0.2);
+    border-radius: 4px;
+  }
+
+  .tour-fact .tour-icon {
+    font-size: 23px;
+    margin-bottom: 10px;
+  }
+
+  .tour-fact strong {
+    display: block;
+    color: var(--tour-gold);
+    font-size: 18px;
+    margin-bottom: 7px;
+  }
+
+  .tour-fact small {
+    color: var(--tour-muted);
+    font-size: 13px;
+  }
+
+  .tour-subheading {
+    font-size: 27px;
+    font-weight: 500;
+    text-align: center;
+    margin: 45px 0 25px;
+  }
+
+  .tour-subheading span {
+    color: var(--tour-gold);
+  }
+
+  .tour-days {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+
+  .tour-day {
+    padding: 25px;
+    background: var(--tour-card);
+    border-left: 3px solid var(--tour-gold);
+    border-radius: 3px;
+  }
+
+  .tour-day-label {
+    color: var(--tour-gold);
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+
+  .tour-day h4 {
+    margin: 10px 0 15px;
+    font-size: 22px;
+    font-weight: 500;
+  }
+
+  .tour-day ul {
+    padding-left: 20px;
+    margin: 0;
+    color: var(--tour-muted);
+    line-height: 2;
+  }
+
+  .tour-transport {
+    padding: 25px;
+    background: rgba(212, 183, 122, 0.07);
+    border: 1px solid rgba(212, 183, 122, 0.22);
+    line-height: 2;
+    color: var(--tour-muted);
+  }
+
+  .tour-transport strong {
+    color: var(--tour-cream);
+  }
+
+  .tour-photos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .tour-photo {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+    background: var(--tour-card);
+    cursor: pointer;
+    border-radius: 4px;
+  }
+
+  .tour-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+    opacity: 0.85;
+  }
+
+  .tour-photo:hover img {
+    transform: scale(1.06);
+    opacity: 1;
+  }
+
+  .tour-photo p {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 30px 12px 12px;
+    color: white;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+    font-size: 17px;
+  }
+
+  .tour-cost {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-family: Arial, "Noto Sans Bengali", sans-serif;
+    font-size: 14px;
+  }
+
+  .tour-cost th,
+  .tour-cost td {
+    padding: 14px 12px;
+    text-align: left;
+    border-bottom: 1px solid rgba(212, 183, 122, 0.18);
+  }
+
+  .tour-cost th {
+    color: var(--tour-gold);
+    font-weight: 500;
+  }
+
+  .tour-cost td {
+    color: var(--tour-muted);
+  }
+
+  .tour-cost td:last-child,
+  .tour-cost th:last-child {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .tour-cost .tour-total td {
+    color: var(--tour-cream);
+    font-weight: bold;
+    border-top: 1px solid var(--tour-gold);
+  }
+
+  .tour-payment {
+    padding: 25px;
+    margin-top: 25px;
+    background: var(--tour-card);
+    border-radius: 4px;
+    line-height: 2;
+  }
+
+  .tour-payment h4 {
+    margin: 0 0 10px;
+    color: var(--tour-gold);
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  .tour-note {
+    margin-top: 25px;
+    color: var(--tour-muted);
+    font-size: 13px;
+    line-height: 1.9;
+  }
+
+  .tour-note strong {
+    color: var(--tour-gold);
+  }
+
+  .tour-end {
+    text-align: center;
+    margin-top: 50px;
+    padding: 25px 10px 0;
+    border-top: 1px solid rgba(212, 183, 122, 0.25);
+  }
+
+  .tour-end p {
+    color: var(--tour-muted);
+    line-height: 2;
+  }
+
+  .tour-end h3 {
+    color: var(--tour-gold);
+    font-weight: 500;
+    font-size: 25px;
+  }
+
+  .tour-reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .tour-reveal.tour-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .tour-lightbox {
+    display: none;
+    position: fixed;
+    z-index: 99999;
+    inset: 0;
+    background: rgba(3, 8, 15, 0.94);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .tour-lightbox.tour-open {
+    display: flex;
+  }
+
+  .tour-lightbox img {
+    max-width: 95%;
+    max-height: 85vh;
+    object-fit: contain;
+  }
+
+  .tour-lightbox button {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    border: 0;
+    background: transparent;
+    color: white;
+    font-size: 36px;
+    cursor: pointer;
+  }
+
+  @media (max-width: 700px) {
+    .tour-section {
+      padding: 55px 14px;
+    }
+
+    .tour-cover {
+      height: 260px;
+    }
+
+    .tour-facts {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .tour-days {
+      grid-template-columns: 1fr;
+    }
+
+    .tour-photos {
+      grid-template-columns: 1fr;
+    }
+
+    .tour-photo {
+      height: 230px;
+    }
+
+    .tour-cost th,
+    .tour-cost td {
+      padding: 12px 7px;
+      font-size: 12px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tour-reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+</style>
+
+<section class="tour-section" id="bandarban-tour">
+  <div class="tour-wrap">
+
+    <header class="tour-heading tour-reveal">
+      <div class="tour-kicker">A Journey Together · 2027</div>
+      <h2>বান্দরবান ট্যুর প্ল্যান</h2>
+      <p>প্রকৃতির সান্নিধ্যে এক রোমাঞ্চকর ভ্রমণ</p>
+    </header>
+
+    <div class="tour-intro tour-reveal">
+      আবারও আমাদের একসঙ্গে হওয়ার সুযোগ এসেছে—
+      দৈনন্দিন ব্যস্ততা থেকে একটু দূরে গিয়ে
+      <span>একসঙ্গে কিছু সুন্দর মুহূর্ত</span> তৈরি করার।
+      হয়তো এমন সুযোগ বারবার আসবে না। তাই এই সফর শুধু
+      ঘোরাঘুরি নয়; পুরোনো বন্ধনকে আরও দৃঢ় করা এবং
+      স্মৃতির পাতায় নতুন কিছু গল্প যোগ করার একটি আয়োজন।
+    </div>
+
+    <div class="tour-cover tour-reveal">
+      <img
+        src="Bandarban.jpg"
+        alt="বান্দরবানের পাহাড়ি প্রাকৃতিক দৃশ্য"
+        loading="lazy"
+      />
+      <div class="tour-cover-caption">
+        <h3>বান্দরবান ভ্রমণ</h3>
+        <p>ইহসান ব্রাদারহুড · মিলন মেলা ২০২৭</p>
+      </div>
+    </div>
+
+    <div class="tour-facts tour-reveal">
+      <div class="tour-fact">
+        <div class="tour-icon">⌖</div>
+        <strong>বান্দরবান</strong>
+        <small>গন্তব্য</small>
+      </div>
+      <div class="tour-fact">
+        <div class="tour-icon">◷</div>
+        <strong>২ দিন, ১ রাত</strong>
+        <small>প্রস্তাবিত সময়</small>
+      </div>
+      <div class="tour-fact">
+        <div class="tour-icon">৳</div>
+        <strong>৪,০০০ টাকা</strong>
+        <small>আনুমানিক জনপ্রতি</small>
+      </div>
+      <div class="tour-fact">
+        <div class="tour-icon">✦</div>
+        <strong>২০২৭</strong>
+        <small>বার্ষিক পরীক্ষার ছুটিতে</small>
+      </div>
+    </div>
+
+    <h3 class="tour-subheading tour-reveal">
+      আমাদের <span>ভ্রমণসূচি</span>
+    </h3>
+
+    <div class="tour-days">
+      <article class="tour-day tour-reveal">
+        <div class="tour-day-label">DAY ONE</div>
+        <h4>পাহাড়ের পথে</h4>
+        <ul>
+          <li>ঢাকা থেকে চট্টগ্রাম যাত্রা</li>
+          <li>চট্টগ্রাম থেকে বান্দরবান যাত্রা</li>
+          <li>পরিকল্পনা ও অনুমতি অনুযায়ী দর্শনীয় স্থান ভ্রমণ</li>
+          <li>দেবতাখুম ও আশপাশের প্রাকৃতিক সৌন্দর্য উপভোগ</li>
+          <li>রাতে বিশ্রাম ও একসঙ্গে সময় কাটানো</li>
+        </ul>
+      </article>
+
+      <article class="tour-day tour-reveal">
+        <div class="tour-day-label">DAY TWO</div>
+        <h4>প্রকৃতির আরও কাছে</h4>
+        <ul>
+          <li>সকালের নাশতার পর নির্ধারিত গন্তব্যে যাত্রা</li>
+          <li>সাঙ্গু নদী ও আশপাশের দৃশ্য উপভোগ</li>
+          <li>রাজা পাথর বা অনুমোদিত কাছাকাছি দর্শনীয় স্থান</li>
+          <li>ফেরার পথে সময় ও রুট অনুকূলে থাকলে নীলগিরি</li>
+          <li>ফেরার যাত্রা শুরু</li>
+        </ul>
+      </article>
+    </div>
+
+    <h3 class="tour-subheading tour-reveal">
+      যাতায়াতের <span>পরিকল্পনা</span>
+    </h3>
+
+    <div class="tour-transport tour-reveal">
+      <strong>ঢাকা → চট্টগ্রাম:</strong>
+      ট্রেনে যাত্রার পরিকল্পনা।<br />
+      <strong>চট্টগ্রাম → বান্দরবান:</strong>
+      বাস অথবা হাইয়েসে যাত্রা।<br />
+      <strong>স্থানীয় যাতায়াত:</strong>
+      নির্ধারিত রুট, দলীয় বাজেট ও স্থানীয় পরিস্থিতি অনুযায়ী ব্যবস্থা করা হবে।
+    </div>
+
+    <h3 class="tour-subheading tour-reveal">
+      ভ্রমণ স্থানের <span>দৃশ্য</span>
+    </h3>
+
+    <div class="tour-photos tour-reveal">
+      <div class="tour-photo">
+        <img src="Debotakhum.jpg" alt="দেবতাখুম" loading="lazy" />
+        <p>দেবতাখুম</p>
+      </div>
+
+      <div class="tour-photo">
+        <img src="SanguRiver.jpg" alt="সাঙ্গু নদী" loading="lazy" />
+        <p>সাঙ্গু নদী</p>
+      </div>
+
+      <div class="tour-photo">
+        <img src="Nilgiri.jpg" alt="নীলগিরি" loading="lazy" />
+        <p>নীলগিরি</p>
+      </div>
+    </div>
+
+    <h3 class="tour-subheading tour-reveal">
+      সম্ভাব্য <span>খরচের হিসাব</span>
+    </h3>
+
+    <table class="tour-cost tour-reveal">
+      <thead>
+        <tr>
+          <th>খরচের বিবরণ</th>
+          <th>জনপ্রতি</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>যাতায়াত ও স্থানীয় পরিবহন</td>
+          <td>৳২,৩০০</td>
+        </tr>
+        <tr>
+          <td>খাবার (আনুমানিক ৬ বেলা)</td>
+          <td>৳৭০০</td>
+        </tr>
+        <tr>
+          <td>নৌকা ও গাইড</td>
+          <td>৳৭০০</td>
+        </tr>
+        <tr>
+          <td>হোটেল (১ রাত)</td>
+          <td>৳৩০০</td>
+        </tr>
+        <tr class="tour-total">
+          <td>মোট আনুমানিক খরচ</td>
+          <td>৳৪,০০০</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="tour-payment tour-reveal">
+      <h4>অগ্রিম টাকা জমা</h4>
+      জনপ্রতি <strong>১,২০০ টাকা</strong> ভ্রমণের অন্তত
+      ১৫ দিন আগে জমা দেওয়ার প্রস্তাব রয়েছে, যাতে ট্রেনের
+      টিকিট ও অন্যান্য প্রয়োজনীয় ব্যবস্থা আগে থেকে করা যায়।
+      চূড়ান্ত তারিখ ও বুকিংয়ের নিয়ম পরে জানানো হবে।
+    </div>
+
+    <div class="tour-note tour-reveal">
+      <strong>বিশেষ দ্রষ্টব্য:</strong>
+      তারিখ, রুট ও খরচ পরিস্থিতি অনুযায়ী পরিবর্তিত হতে পারে।
+      দেবতাখুম, থানচি বা অন্য কোনো স্থানে যাওয়ার আগে স্থানীয়
+      প্রশাসনের নির্দেশনা, অনুমতি, নিরাপত্তা পরিস্থিতি এবং
+      যাতায়াতের বাস্তবতা যাচাই করতে হবে। কোনো স্থান বন্ধ বা
+      অনিরাপদ থাকলে বিকল্প গন্তব্য নির্ধারণ করা হবে।
+      খাবার, হোটেল ও পরিবহনের প্রকৃত খরচ বুকিংয়ের আগে নিশ্চিত করা জরুরি।
+    </div>
+
+    <footer class="tour-end tour-reveal">
+      <h3>গন্তব্য শুধু বান্দরবান নয়…</h3>
+      <p>
+        গন্তব্য আমাদের বন্ধুত্ব, একসঙ্গে কাটানো সময়
+        আর ভবিষ্যতে মনে রাখার মতো কিছু গল্প।
+      </p>
+    </footer>
+
+  </div>
+</section>
+<!-- BROTHERHOOD JERSEY SECTION -->
+<style>
+  .jersey-section {
+    background: #0d1726;
+    color: #f4efe5;
+    padding: 45px 18px;
+    font-family: Georgia, "Noto Serif Bengali", serif;
+  }
+
+  .jersey-wrap {
+    max-width: 850px;
+    margin: auto;
+  }
+
+  .jersey-heading {
+    text-align: center;
+    margin-bottom: 25px;
+  }
+
+  .jersey-heading small {
+    color: #d4b77a;
+    letter-spacing: 2px;
+    font-size: 11px;
+  }
+
+  .jersey-heading h2 {
+    font-size: clamp(25px, 4vw, 34px);
+    font-weight: 500;
+    margin: 12px 0;
+  }
+
+  .jersey-heading p {
+    color: #b5bfcc;
+    font-size: 14px;
+    line-height: 1.9;
+  }
+
+  .jersey-card {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    max-width: 650px;
+    margin: auto;
+    padding: 16px;
+    background: #142235;
+    border: 1px solid rgba(212, 183, 122, 0.3);
+    border-radius: 5px;
+  }
+
+  .jersey-image {
+    position: relative;
+    flex: 0 0 180px;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 4px;
+    background: #1b2b3d;
+    cursor: pointer;
+  }
+
+  .jersey-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+  }
+
+  .jersey-image:hover img {
+    transform: scale(1.05);
+  }
+
+  .jersey-price {
+    position: absolute;
+    bottom: 9px;
+    right: 9px;
+    background: #d4b77a;
+    color: #0d1726;
+    padding: 7px 11px;
+    border-radius: 3px;
+    font-family: Arial, sans-serif;
+    font-size: 17px;
+    font-weight: bold;
+    pointer-events: none;
+  }
+
+  .jersey-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .jersey-info h3 {
+    font-size: 22px;
+    font-weight: 500;
+    margin: 0 0 12px;
+  }
+
+  .jersey-info p {
+    color: #b5bfcc;
+    font-size: 14px;
+    line-height: 1.9;
+    margin: 0 0 12px;
+  }
+
+  .jersey-click {
+    color: #d4b77a;
+    font-size: 13px;
+  }
+
+  .jersey-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    background: rgba(3, 8, 15, 0.94);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .jersey-lightbox.open {
+    display: flex;
+  }
+
+  .jersey-lightbox img {
+    display: block;
+    max-width: 95%;
+    max-height: 82vh;
+    object-fit: contain;
+  }
+
+  .jersey-lightbox button {
+    position: absolute;
+    top: 15px;
+    right: 22px;
+    background: transparent;
+    color: white;
+    border: 0;
+    font-size: 38px;
+    cursor: pointer;
+  }
+
+  @media (max-width: 540px) {
+    .jersey-card {
+      gap: 14px;
+      padding: 11px;
+    }
+
+    .jersey-image {
+      flex-basis: 135px;
+      height: 155px;
+    }
+
+    .jersey-info h3 {
+      font-size: 18px;
+    }
+
+    .jersey-info p {
+      font-size: 12px;
+    }
+  }
+</style>
+
+<section class="jersey-section" id="brotherhood-jersey">
+  <div class="jersey-wrap">
+
+    <header class="jersey-heading">
+      <small>ONE BROTHERHOOD · ONE IDENTITY</small>
+      <h2>আমাদের মিলন মেলার পোশাক</h2>
+      <p>
+        একই পোশাকে, একই বন্ধনে—আমাদের পরিচয় হোক এক।
+        সবাই নির্ধারিত জার্সি পরে আসব, ইনশাআল্লাহ।
+      </p>
+    </header>
+
+    <div class="jersey-card">
+
+      <div
+        class="jersey-image"
+        id="jerseyPreview"
+        role="button"
+        tabindex="0"
+        aria-label="জার্সির বড় ছবি দেখুন"
+      >
+        <img
+          src="Jersey.png"
+          alt="মিলন মেলার নির্ধারিত জার্সি"
+          loading="eager"
+        />
+        <span class="jersey-price">...</span>
+      </div>
+
+      <div class="jersey-info">
+        <h3>ব্রাদারহুড জার্সি</h3>
+        <p>
+          সবার জন্য একই ডিজাইনের নির্ধারিত পোশাক।
+          ছবিতে ক্লিক করে সম্পূর্ণ ডিজাইন দেখে নাও।
+        </p>
+        <div class="jersey-click">
+          ↗ বড় করে দেখতে ছবিতে ক্লিক করো
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ENLARGED JERSEY IMAGE -->
+<div
+  class="jersey-lightbox"
+  id="jerseyLightbox"
+  role="dialog"
+  aria-label="জার্সির বড় ছবি"
+  aria-modal="true"
+>
+  <button
+    id="jerseyClose"
+    type="button"
+    aria-label="বন্ধ করুন"
+  >×</button>
+
+  <img
+    src="Jersey.png"
+    alt="জার্সির সম্পূর্ণ ডিজাইন"
+  />
+</div>
+
+<script>
+(function () {
+  const preview = document.getElementById("jerseyPreview");
+  const lightbox = document.getElementById("jerseyLightbox");
+  const closeButton = document.getElementById("jerseyClose");
+
+  if (!preview || !lightbox || !closeButton) return;
+
+  function openJersey() {
+    lightbox.classList.add("open");
+  }
+
+  function closeJersey() {
+    lightbox.classList.remove("open");
+  }
+
+  preview.addEventListener("click", openJersey);
+
+  preview.addEventListener("keydown", function (event) {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openJersey();
+    }
+  });
+
+  closeButton.addEventListener("click", closeJersey);
+
+  lightbox.addEventListener("click", function (event) {
+    if (event.target === lightbox) {
+      closeJersey();
+    }
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      closeJersey();
+    }
+  });
+})();
+</script>
+<!-- IMAGE LIGHTBOX -->
+<div class="tour-lightbox" id="tourLightbox" aria-label="ছবি বড় করে দেখুন">
+  <button type="button" id="tourLightboxClose" aria-label="বন্ধ করুন">×</button>
+  <img id="tourLightboxImage" src="" alt="বড় ছবি" />
+</div>
+
+<script>
+(function () {
+  const section = document.getElementById("bandarban-tour");
+  if (!section) return;
+
+  // Scroll reveal animation
+  const revealItems = section.querySelectorAll(".tour-reveal");
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("tour-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealItems.forEach((item) => observer.observe(item));
+  } else {
+    revealItems.forEach((item) => item.classList.add("tour-visible"));
+  }
+
+  // Click a gallery image to enlarge it
+  const lightbox = document.getElementById("tourLightbox");
+  const lightboxImage = document.getElementById("tourLightboxImage");
+  const closeButton = document.getElementById("tourLightboxClose");
+
+  section.querySelectorAll(".tour-photo img").forEach((img) => {
+    img.addEventListener("click", () => {
+      lightboxImage.src = img.src;
+      lightboxImage.alt = img.alt;
+      lightbox.classList.add("tour-open");
+    });
+  });
+
+  function closeLightbox() {
+    lightbox.classList.remove("tour-open");
+    lightboxImage.src = "";
+  }
+
+  closeButton.addEventListener("click", closeLightbox);
+
+  lightbox.addEventListener("click", (event) => {
+    if (event.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeLightbox();
+  });
+})();
+
+</script>
+<!-- MILON MELA ADMIN & CONTACT SECTION -->
+<style>
+  .milon-admin {
+    background: #0d1726;
+    color: #f4efe5;
+    padding: 65px 18px 45px;
+    text-align: center;
+    font-family: Georgia, "Noto Serif Bengali", serif;
+  }
+
+  .milon-admin-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .milon-admin-label {
+    color: #d4b77a;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .milon-admin h2 {
+    font-size: clamp(27px, 5vw, 40px);
+    font-weight: 500;
+    margin: 14px 0 12px;
+  }
+
+  .milon-admin-intro {
+    color: #b5bfcc;
+    line-height: 1.9;
+    margin: 0 auto 35px;
+  }
+
+  .milon-admin-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    text-align: left;
+  }
+
+  .milon-admin-card {
+    padding: 25px 20px;
+    background: #142235;
+    border: 1px solid rgba(212, 183, 122, 0.25);
+    border-top: 3px solid #d4b77a;
+    border-radius: 4px;
+    transition: transform 0.3s ease,
+                border-color 0.3s ease;
+  }
+
+  .milon-admin-card:hover {
+    transform: translateY(-5px);
+    border-color: #d4b77a;
+  }
+
+  .milon-admin-role {
+    color: #d4b77a;
+    font-size: 13px;
+    margin-bottom: 13px;
+  }
+
+  .milon-admin-card h3 {
+    font-size: 21px;
+    font-weight: 500;
+    margin: 0 0 12px;
+    overflow-wrap: anywhere;
+  }
+
+  .milon-admin-card p {
+    color: #b5bfcc;
+    font-size: 14px;
+    line-height: 1.9;
+    margin: 0;
+  }
+
+  .milon-payment {
+    margin-top: 30px;
+    padding: 25px;
+    border: 1px solid rgba(212, 183, 122, 0.35);
+    background: rgba(212, 183, 122, 0.07);
+    text-align: left;
+    line-height: 2;
+  }
+
+  .milon-payment h3 {
+    color: #d4b77a;
+    font-size: 21px;
+    font-weight: 500;
+    margin: 0 0 10px;
+  }
+
+  .milon-payment strong {
+    color: #f4efe5;
+  }
+
+  .milon-final-quote {
+    max-width: 750px;
+    margin: 55px auto 0;
+    padding: 30px 12px 10px;
+    border-top: 1px solid rgba(212, 183, 122, 0.35);
+  }
+
+  .milon-final-quote .quote-mark {
+    color: #d4b77a;
+    font-size: 42px;
+    line-height: 1;
+  }
+
+  .milon-final-quote p {
+    font-size: clamp(20px, 4vw, 29px);
+    line-height: 1.9;
+    color: #f4efe5;
+    margin: 15px 0;
+  }
+
+  .milon-final-quote span {
+    color: #d4b77a;
+  }
+
+  .milon-admin-small {
+    color: #7f8da0;
+    font-size: 12px;
+    margin-top: 30px;
+    letter-spacing: 1px;
+  }
+
+  @media (max-width: 650px) {
+    .milon-admin-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .milon-admin-card {
+      padding: 22px;
+    }
+
+    .milon-payment {
+      padding: 20px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .milon-admin-card {
+      transition: none;
+    }
+  }
+</style>
+
+<section class="milon-admin" id="milon-admin">
+  <div class="milon-admin-wrap">
+
+    <div class="milon-admin-label">Management & Contact</div>
+
+    <h2>মিলন মেলা পরিচালনা</h2>
+
+    <p class="milon-admin-intro">
+      আমাদের এই আয়োজন সুন্দর ও সুশৃঙ্খলভাবে সম্পন্ন করার জন্য
+      দায়িত্বপ্রাপ্ত ভাইদের সঙ্গে যোগাযোগ রাখুন।
+      সবার সহযোগিতায় আমাদের মিলন মেলা হয়ে উঠুক স্মরণীয়।
+    </p>
+
+    <div class="milon-admin-grid">
+
+      <div class="milon-admin-card">
+        <div class="milon-admin-role">০১ · নেতৃত্ব</div>
+        <h3>যায়েদ সিফাত</h3>
+        <p>
+          <strong>আমির</strong><br />
+          সার্বিক নেতৃত্ব, সমন্বয় এবং আয়োজনের গুরুত্বপূর্ণ
+          বিষয়ে দিকনির্দেশনার দায়িত্বে।
+        </p>
+      </div>
+
+      <div class="milon-admin-card">
+        <div class="milon-admin-role">০২ · ব্যবস্থাপনা</div>
+        <h3>মুস্তাফিজ</h3>
+        <p>
+          <strong>ব্যবস্থাপনা ও আয়োজন</strong><br />
+          স্থান নির্বাচন, থাকা-খাওয়া এবং অন্যান্য
+          প্রয়োজনীয় ব্যবস্থাপনার দায়িত্বে।
+        </p>
+      </div>
+
+      <div class="milon-admin-card">
+        <div class="milon-admin-role">০৩ · যোগাযোগ</div>
+        <h3>তানভীর ও ওমর</h3>
+        <p>
+          <strong>তথ্য ও যোগাযোগ</strong><br />
+          যেকোনো তথ্য, পরামর্শ কিংবা আয়োজনসংক্রান্ত
+          প্রশ্নের জন্য তাঁদের সঙ্গে যোগাযোগ করুন।
+        </p>
+      </div>
+
+    </div>
+
+    <div class="milon-payment">
+      <h3>ট্রেনের অগ্রিম টিকিটের টাকা</h3>
+      ট্রেনের অগ্রিম টিকিট ও প্রয়োজনীয় বুকিংয়ের ব্যবস্থা
+      সময়মতো সম্পন্ন করার জন্য প্রত্যেককে জনপ্রতি
+      <strong>১,২০০ টাকা</strong> অন্তত
+      <strong>১৫ দিন আগে</strong> পাঠানোর বিষয়টি নিশ্চিত করতে হবে।
+
+      <br />
+
+      টাকা পাঠানোর পর দায়িত্বপ্রাপ্ত ব্যক্তিকে জানিয়ে
+      নিজের পেমেন্ট নিশ্চিত করে নিন, যাতে টিকিটের
+      ব্যবস্থা করতে কোনো অসুবিধা না হয়।
+    </div>
+
+    <div class="milon-final-quote">
+      <div class="quote-mark">“</div>
+      <p>
+        এটি কেবল ভ্রমণ নয়—
+        <span>এটি একসঙ্গে কাটানো জীবনের শ্রেষ্ঠ কিছু মুহূর্তের গল্প।</span>
+      </p>
+      <div class="quote-mark">”</div>
+    </div>
+
+    <div class="milon-admin-small">
+      ইহসান ব্রাদারহুড · মিলন মেলা ২০২৭
+    </div>
+
+  </div>
+</section>
+</body>
+</html>
